@@ -79,7 +79,11 @@ bool Adafruit_BME280::begin(uint8_t           addr)
 
     readCoefficients(); // read trimming parameters, see DS 4.2.2
 
-    setSampling(); // use defaults
+    bme.setSampling(MODE_FORCED,
+        SAMPLING_X1,   // temperature
+        SAMPLING_NONE, // pressure
+        SAMPLING_X1,   // humidity
+        FILTER_OFF );
 
     return true;
 }
